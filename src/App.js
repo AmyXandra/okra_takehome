@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import RootModal from "./components/modals/RootModal";
+import useModal from "./components/modals/UseModal";
+import ModalRoute from "./components/ModalRoute";
 
-function App() {
+function App(props) {
+  const { isShowing, toggle } = useModal();
+  console.log("props", props);
+  // const subreddit = domElement.getAttribute("data-subreddit");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className="button-default" onClick={toggle}>
+        Show Modal
+      </button>
+      <RootModal isShowing={isShowing} hide={toggle}>
+        <ModalRoute />
+      </RootModal>
     </div>
   );
 }
